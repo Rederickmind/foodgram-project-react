@@ -1,14 +1,3 @@
-from django.db.models import Sum
-from django.shortcuts import HttpResponse, get_object_or_404
-from django_filters.rest_framework import DjangoFilterBackend
-from djoser.views import UserViewSet
-from rest_framework import status, views, viewsets
-from rest_framework.decorators import action
-from rest_framework.generics import ListAPIView
-from rest_framework.permissions import (AllowAny, IsAuthenticated,
-                                        IsAuthenticatedOrReadOnly)
-from rest_framework.response import Response
-
 from api.filters import IngredientSearchFilter, RecipesFilter
 from api.pagination import CustomPagination
 from api.permissions import IsAuthorOrReadOnly
@@ -16,7 +5,17 @@ from api.serializers import (AddRecipeSerializer, CustomUserSerializer,
                              FavoriteSerializer, IngredientSerializer,
                              RecipeSerializer, ShoppingCartSerializer,
                              SubscriptionSerializer, TagSerializer)
+from django.db.models import Sum
+from django.shortcuts import HttpResponse, get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
+from djoser.views import UserViewSet
 from recipes.models import Ingredient, IngredientInRecipe, Recipe, Tag
+from rest_framework import status, views, viewsets
+from rest_framework.decorators import action
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import (AllowAny, IsAuthenticated,
+                                        IsAuthenticatedOrReadOnly)
+from rest_framework.response import Response
 from users.models import Subscription, User
 
 
