@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '*',
-    'web'
+    'web',
 ]
 
 
