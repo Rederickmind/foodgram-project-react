@@ -1,20 +1,16 @@
-from api.filters import IngredientSearchFilter
+from api.filters import AuthorAndTagFilter, IngredientSearchFilter
 from api.pagination import CustomPagination
 from api.permissions import IsAuthorOrReadOnly
-from api.serializers import (
-    CustomUserSerializer,
-    IngredientSerializer,
-    RecipeSerializer,
-    SubscriptionSerializer,
-    TagSerializer,
-    ShortRecipeSerializer
-)
+from api.serializers import (CustomUserSerializer, IngredientSerializer,
+                             RecipeSerializer, ShortRecipeSerializer,
+                             SubscriptionSerializer, TagSerializer)
+from django.shortcuts import HttpResponse, get_object_or_404
+from djoser.views import UserViewSet
+from recipes.models import (Favorite, Ingredient, IngredientAmount, Recipe,
+                            ShoppingСart, Tag)
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
-from django.shortcuts import HttpResponse, get_object_or_404
-from djoser.views import UserViewSet
-from recipes.models import Ingredient, IngredientAmount, Recipe, Tag, Favorite
 from rest_framework import status, views, viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import ListAPIView
@@ -22,8 +18,6 @@ from rest_framework.permissions import (AllowAny, IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
 from rest_framework.response import Response
 from users.models import Subscription, User
-from recipes.models import ShoppingСart
-from api.filters import AuthorAndTagFilter, IngredientSearchFilter
 
 
 class TagViewSet(viewsets.ReadOnlyModelViewSet):

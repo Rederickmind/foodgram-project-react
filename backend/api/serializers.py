@@ -1,11 +1,11 @@
+from django.shortcuts import get_object_or_404
 from djoser.serializers import UserCreateSerializer, UserSerializer
 from drf_extra_fields.fields import Base64ImageField
 from recipes.models import (Favorite, Ingredient, IngredientAmount, Recipe,
                             ShoppingСart, Tag)
-from rest_framework.validators import UniqueTogetherValidator
 from rest_framework import serializers
+from rest_framework.validators import UniqueTogetherValidator
 from users.models import Subscription, User
-from django.shortcuts import get_object_or_404
 
 
 class CustomUserSerializer(UserSerializer):
