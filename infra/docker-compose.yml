@@ -9,7 +9,7 @@ services:
       - ./.env
   
   web:
-    image: rederickmind/backend:v1
+    image: rederickmind/backend:latest
     restart: always
     volumes:
       - static_value:/app/static/
@@ -20,7 +20,7 @@ services:
       - ./.env
   
   frontend:
-    image: rederickmind/frontend:v1
+    image: rederickmind/frontend:latest
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
