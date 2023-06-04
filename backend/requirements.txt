@@ -15,6 +15,7 @@ djangorestframework==3.14.0
 djangorestframework-simplejwt==4.8.0
 djoser==2.1.0
 flake8==5.0.4
+freetype-py==2.3.0
 gunicorn==20.1.0
 idna==3.4
 itypes==1.2.0
@@ -24,6 +25,7 @@ mccabe==0.7.0
 oauthlib==3.2.2
 Pillow==9.0.0
 psycopg2-binary==2.8.6
+pycairo==1.23.0
 pycodestyle==2.9.1
 pycparser==2.21
 pyflakes==2.5.0
@@ -31,8 +33,10 @@ PyJWT==2.6.0
 python-dotenv==0.21.1
 python3-openid==3.2.0
 pytz==2023.3
+reportlab==4.0.0
 requests==2.30.0
 requests-oauthlib==1.3.1
+rlPyCairo==0.2.0
 six==1.16.0
 social-auth-app-django==4.0.0
 social-auth-core==4.4.2
