@@ -23,7 +23,7 @@ Foodgram - проект позволяет:
 ```
 Django 3.2
 Django REST framework
-Python 3.9.10
+Python 3.9
 Docker
 DockerHub
 Nginx
