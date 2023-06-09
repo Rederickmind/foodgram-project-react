@@ -135,4 +135,4 @@ sudo docker-compose exec web python manage.py createsuperuser
 [Foodgram] (http://158.160.19.189/recipes)
 
 ### Автор проекта:
-Nikita Levushkin, Yandex Practikum
+Nikita Levushkin, Yandex Practikum 19+
