@@ -20,8 +20,7 @@ class Command(BaseCommand):
             with open(os.path.join(DATA_ROOT, options['filename']), 'r',
                       encoding='utf-8') as file_csv:
                 data = reader(file_csv)
-                for row in data:
-                    name, measurement_unit = row
+                for name, measurement_unit in data:
                     Ingredient.objects.get_or_create(
                         name=name,
                         measurement_unit=measurement_unit
