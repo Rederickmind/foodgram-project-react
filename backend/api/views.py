@@ -3,8 +3,7 @@ from api.pagination import CustomPagination
 from api.permissions import IsAuthenticatedAuthorOrReadOnly
 from api.serializers import (CustomUserSerializer, IngredientSerializer,
                              RecipeSerializer, ShortRecipeSerializer,
-                             SubscriptionSerializer,
-                             TagSerializer)
+                             SubscriptionSerializer, TagSerializer)
 from django.shortcuts import HttpResponse, get_object_or_404
 from djoser.views import UserViewSet
 from recipes.models import (Favorite, Ingredient, IngredientAmount, Recipe,

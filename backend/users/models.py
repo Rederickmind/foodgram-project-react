@@ -3,8 +3,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models import UniqueConstraint
-from users.validators import validate_email_address, validate_username
 from foodgram.settings import MAX_LENGTH_EMAIL, MAX_LENGTH_USER_NAMES_INFO
+from users.validators import validate_email_address, validate_username
 
 
 class User(AbstractUser):

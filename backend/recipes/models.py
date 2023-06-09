@@ -2,7 +2,7 @@ from colorfield.fields import ColorField
 from django.contrib.auth import get_user_model
 from django.core import validators
 from django.db import models
-from foodgram.settings import MAX_LENGTH_TEXT, MAX_LENGTH_HEX
+from foodgram.settings import MAX_LENGTH_HEX, MAX_LENGTH_TEXT
 
 User = get_user_model()
 
