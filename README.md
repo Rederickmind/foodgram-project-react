@@ -25,6 +25,7 @@ Django 3.2
 Django REST framework
 Python 3.9.10
 Docker
+DockerHub
 Nginx
 GitHub Actions
 Postgres SQL
