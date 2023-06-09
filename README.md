@@ -117,11 +117,11 @@ sudo docker-compose up -d --build
 * После успешной сборки на сервере выполните команды (только после первого деплоя):
 - Соберите статические файлы:
 ```
-sudo docker-compose exec backend python manage.py collectstatic --noinput
+sudo docker-compose exec web python manage.py collectstatic --noinput
 ```
 - Примените миграции:
 ```
-sudo docker-compose exec backend python manage.py migrate --noinput
+sudo docker-compose exec web python manage.py migrate --noinput
 ```
 - Загрузите ингридиенты  в базу данных:
 ```
@@ -129,7 +129,7 @@ sudo docker-compose exec web python manage.py import_ingredients
 ```
 - Создать суперпользователя Django:
 ```
-sudo docker-compose exec backend python manage.py createsuperuser
+sudo docker-compose exec web python manage.py createsuperuser
 ```
 - Проект будет доступен по вашему IP
 
