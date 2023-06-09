@@ -30,20 +30,6 @@ GitHub Actions
 Postgres SQL
 ```
 
-### Для работы workflow необходимо добавить переменные окружения в Secrets GitHub:
-```
-DOCKER_USERNAME=<имя пользователя DockerHub>
-DOCKER_PASSWORD=<пароль DockerHub>
-
-USER=<username для подключения к удаленному серверу>
-HOST=<ip-адрес сервера>
-PASSPHRASE=<пароль для сервера (если установлен)>
-SSH_KEY=<SSH-ключ (для получения команда: cat ~/.ssh/id_rsa)>
-
-TELEGRAM_TO=<id вашего Телеграм-аккаунта>
-TELEGRAM_TOKEN=<Телеграм-токен вашего бота>
-```
-
 ## Инструкции по установке
 ***- Клонируйте репозиторий:***
 ```
@@ -103,6 +89,10 @@ SSH_KEY=<ваш SSH ключ (для получения команда: cat ~/.s
 
 TELEGRAM_TO=<ID чата, в который придет сообщение>
 TELEGRAM_TOKEN=<токен вашего бота>
+
+DEBUG= Значение дебага
+SECRET_KEY= Ваш секретный ключ Django проекта
+ALLOWED_HOSTS = Разрешенные хосты
 ```
 Workflow состоит из трёх шагов:
 - Проверка кода на соответствие PEP8
