@@ -136,4 +136,4 @@ sudo docker-compose exec web python manage.py createsuperuser
 
 ### Автор проекта:
 Nikita Levushkin,
-Yandex Practikum 19+
+Yandex Practikum
