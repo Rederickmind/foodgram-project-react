@@ -1,10 +1,10 @@
-from api.filters import RecipesFilter, IngredientSearchFilter
+from api.filters import IngredientSearchFilter, RecipesFilter
 from api.pagination import CustomPagination
 from api.permissions import IsAuthenticatedAuthorOrReadOnly
 from api.serializers import (CustomUserSerializer, IngredientSerializer,
-                             RecipeWriteSerializer, ShortRecipeSerializer,
-                             SubscriptionSerializer, TagSerializer,
-                             RecipeReadSerializer)
+                             RecipeReadSerializer, RecipeWriteSerializer,
+                             ShortRecipeSerializer, SubscriptionSerializer,
+                             TagSerializer)
 from django.shortcuts import HttpResponse, get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from djoser.views import UserViewSet
@@ -92,6 +92,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
             return self.add_obj(Favorite, request.user, pk)
         if request.method == 'DELETE':
             return self.delete_obj(Favorite, request.user, pk)
+        return None
 
     @action(detail=True, methods=['post', 'delete'],
             permission_classes=[IsAuthenticated])
@@ -100,6 +101,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
             return self.add_obj(ShoppingСart, request.user, pk)
         if request.method == 'DELETE':
             return self.delete_obj(ShoppingСart, request.user, pk)
+        return None
 
     @action(detail=False, methods=['get'],
             permission_classes=[IsAuthenticated])
