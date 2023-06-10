@@ -27,7 +27,6 @@ class RecipesFilter(FilterSet):
     is_in_shopping_cart = filters.NumberFilter(
         method='get_is_in_shopping_cart',
     )
-    print('Фильтр вызван')
 
     class Meta:
         model = Recipe
