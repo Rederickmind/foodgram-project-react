@@ -1,10 +1,12 @@
-from api.filters import AuthorAndTagFilter, IngredientSearchFilter
+from api.filters import RecipesFilter, IngredientSearchFilter
 from api.pagination import CustomPagination
 from api.permissions import IsAuthenticatedAuthorOrReadOnly
 from api.serializers import (CustomUserSerializer, IngredientSerializer,
-                             RecipeSerializer, ShortRecipeSerializer,
-                             SubscriptionSerializer, TagSerializer)
+                             RecipeWriteSerializer, ShortRecipeSerializer,
+                             SubscriptionSerializer, TagSerializer,
+                             RecipeReadSerializer)
 from django.shortcuts import HttpResponse, get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
 from djoser.views import UserViewSet
 from recipes.models import (Favorite, Ingredient, IngredientAmount, Recipe,
                             ShoppingСart, Tag)
@@ -14,7 +16,8 @@ from reportlab.pdfgen import canvas
 from rest_framework import status, views, viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import ListAPIView
-from rest_framework.permissions import (AllowAny, IsAuthenticated,
+from rest_framework.permissions import (SAFE_METHODS, AllowAny,
+                                        IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
 from rest_framework.response import Response
 from users.models import Subscription, User
@@ -69,37 +72,41 @@ class IngredientViewSet(viewsets.ReadOnlyModelViewSet):
 
 class RecipeViewSet(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
-    serializer_class = RecipeSerializer
     pagination_class = CustomPagination
-    filter_class = AuthorAndTagFilter
+    filter_backends = (DjangoFilterBackend,)
+    filter_class = [RecipesFilter]
     permission_classes = [IsAuthenticatedAuthorOrReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
+    def get_serializer_class(self):
+        if self.request.method in SAFE_METHODS:
+            return RecipeReadSerializer
+        return RecipeWriteSerializer
+
     @action(detail=True, methods=['post', 'delete'],
             permission_classes=[IsAuthenticated])
-    def favorite(self, request, pk=None):
+    def favorite(self, request, pk):
         if request.method == 'POST':
             return self.add_obj(Favorite, request.user, pk)
         if request.method == 'DELETE':
             return self.delete_obj(Favorite, request.user, pk)
-        return None
 
     @action(detail=True, methods=['post', 'delete'],
             permission_classes=[IsAuthenticated])
-    def shopping_cart(self, request, pk=None):
+    def shopping_cart(self, request, pk):
         if request.method == 'POST':
             return self.add_obj(ShoppingСart, request.user, pk)
         if request.method == 'DELETE':
             return self.delete_obj(ShoppingСart, request.user, pk)
-        return None
 
     @action(detail=False, methods=['get'],
             permission_classes=[IsAuthenticated])
     def download_shopping_cart(self, request):
         ingredients = IngredientAmount.objects.filter(
-            recipe__cart__user=request.user).values_list(
+            recipe__shoppingcart_recipe__user=request.user
+        ).values_list(
             'ingredient__name', 'ingredient__measurement_unit',
             'amount')
         return pdf_generation(ingredients)
@@ -134,6 +141,8 @@ class SubscriptionViewSet(ListAPIView):
     serializer_class = SubscriptionSerializer
     pagination_class = CustomPagination
     permission_classes = (IsAuthenticated,)
+    filter_backends = (DjangoFilterBackend,)
+    filter_class = [RecipesFilter]
 
     def get_queryset(self):
         return User.objects.filter(following__user=self.request.user)

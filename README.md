@@ -112,6 +112,7 @@ sudo docker-compose exec web python manage.py collectstatic --noinput
 ```
 - Примените миграции:
 ```
+sudo docker-compose exec web python manage.py makemigrations --noinput
 sudo docker-compose exec web python manage.py migrate --noinput
 ```
 - Загрузите ингридиенты  в базу данных:
