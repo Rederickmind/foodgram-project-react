@@ -1,15 +1,6 @@
-from api.filters import IngredientSearchFilter, RecipesFilter
-from api.pagination import CustomPagination
-from api.permissions import IsAuthenticatedAuthorOrReadOnly
-from api.serializers import (CustomUserSerializer, IngredientSerializer,
-                             RecipeReadSerializer, RecipeWriteSerializer,
-                             ShortRecipeSerializer, SubscriptionSerializer,
-                             TagSerializer)
 from django.shortcuts import HttpResponse, get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from djoser.views import UserViewSet
-from recipes.models import (Favorite, Ingredient, IngredientAmount, Recipe,
-                            ShoppingСart, Tag)
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
@@ -20,6 +11,16 @@ from rest_framework.permissions import (SAFE_METHODS, AllowAny,
                                         IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
 from rest_framework.response import Response
+
+from api.filters import IngredientSearchFilter, RecipesFilter
+from api.pagination import CustomPagination
+from api.permissions import IsAuthenticatedAuthorOrReadOnly
+from api.serializers import (CustomUserSerializer, IngredientSerializer,
+                             RecipeReadSerializer, RecipeWriteSerializer,
+                             ShortRecipeSerializer, SubscriptionSerializer,
+                             TagSerializer)
+from recipes.models import (Favorite, Ingredient, IngredientAmount, Recipe,
+                            ShoppingСart, Tag)
 from users.models import Subscription, User
 
 

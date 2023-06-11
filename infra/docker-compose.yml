@@ -9,9 +9,6 @@ services:
       - ./.env
   
   web:
-    # build:
-    #   context: ../backend
-    #   dockerfile: Dockerfile
     image: rederickmind/backend:latest
     restart: always
     volumes:
@@ -23,9 +20,6 @@ services:
       - ./.env
   
   frontend:
-    # build:
-    #   context: ../frontend
-    #   dockerfile: Dockerfile
     image: rederickmind/frontend:latest
     volumes:
       - ../frontend/:/app/result_build/
