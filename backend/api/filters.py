@@ -1,8 +1,7 @@
-# from distutils.util import strtobool
 from django_filters.rest_framework import FilterSet, filters
 from recipes.models import Recipe, Tag
-from users.models import User
 from rest_framework.filters import SearchFilter
+from users.models import User
 
 
 class IngredientSearchFilter(SearchFilter):
