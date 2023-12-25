@@ -122,8 +122,6 @@ sudo docker-compose exec web python manage.py createsuperuser
 ```
 - Проект будет доступен по вашему IP
 
-```
-
 ### Автор проекта:
 Nikita Levushkin,
 Yandex Practikum
