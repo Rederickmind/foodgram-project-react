@@ -3,13 +3,8 @@
 
 На этом сервисе пользователи могут публиковать рецепты, подписываться на публикации других пользователей, добавлять понравившиеся рецепты в список «Избранное», а перед походом в магазин скачивать сводный список продуктов, необходимых для приготовления одного или нескольких выбранных блюд.
 
-[![Foodgram workflow](https://github.com/RederickMind/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)](https://github.com/RederickMind/foodgram-project-react/actions/workflows/foodgram_workflow.yml)
+[![Foodgram workflow](https://github.com/RederickMind/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)](https://github.com/RederickMind/foodgram-project-react/actions/workflows/foodgram_workflow.yml) - Workflow is failing because of turned off VPS.
 
-## Проект доступен по ссылке:
-
-```
-- http://158.160.19.189
-```
 
 Foodgram - проект позволяет:
 
@@ -70,7 +65,8 @@ SECRET_KEY= Ваш секретный ключ Django проекта
 ALLOWED_HOSTS = Разрешенные хосты
 ```
 * Для работы с Workflow добавьте в Secrets GitHub переменные окружения для работы:
-    ```
+
+```
 DB_ENGINE=<django.db.backends.postgresql>
 DB_NAME=<имя базы данных postgres>
 DB_USER=<пользователь бд>
@@ -95,6 +91,7 @@ DEBUG= Значение дебага
 SECRET_KEY= Ваш секретный ключ Django проекта
 ALLOWED_HOSTS = Разрешенные хосты
 ```
+
 Workflow состоит из трёх шагов:
 - Проверка кода на соответствие PEP8
 - Сборка и публикация образа бекенда на DockerHub.
@@ -126,14 +123,6 @@ sudo docker-compose exec web python manage.py createsuperuser
 - Проект будет доступен по вашему IP
 
 ```
-
-### Ссылки для проверки сайта:
-
-[Admin](http://158.160.19.189/admin/login/?next=/admin/)
-
-[Api](http://158.160.19.189/api/)
-
-[Foodgram] (http://158.160.19.189/recipes)
 
 ### Автор проекта:
 Nikita Levushkin,
